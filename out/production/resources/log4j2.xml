@@ -9,7 +9,7 @@
         </console>
 
         <!-- 这个就是自定义的Appender -->
-        <FileAppender name="File" fileName="log.log">
+        <FileAppender name="File" fileName="${filename}/logs.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n" />
         </FileAppender>
 
