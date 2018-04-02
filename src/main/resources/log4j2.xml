@@ -6,7 +6,7 @@
             <PatternLayout pattern="%highlight{[ %p ] [%-d{yyyy-MM-dd HH:mm:ss}] [%l] %m%n}"/>
         </console>
 
-        <FileAppender name="File" fileName="logs.log">
+        <FileAppender name="File" fileName="D:/Documents/log.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n" />
         </FileAppender>
 
