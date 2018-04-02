@@ -14,11 +14,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @RestController
 @SpringBootApplication
 public class WordladderApplication {
+	static Logger logger = LogManager.getLogger(WordladderApplication.class.getName());
 	@RequestMapping("/{errinput}")
-	String err(@PathVariable String errinput) {
+	public static String err(@PathVariable String errinput) {
+		logger.info("wrong address");
 		return "Invalid input. Input should be in the form of /{word1}/{word2}.";
 	}
 
@@ -32,12 +38,15 @@ public class WordladderApplication {
 		word2 = word2.toLowerCase();
 
 		if(word1.length() != word2.length()) {
+			logger.info("the two words have different length");
 			return "The two words must be the same length.";
 		}
 		else if(word1.equals(word2)){
+			logger.info("word1 is equal to word2");
 			return "The two words must be different.";
 		}
 		else if(!(dictionary.contains(word1) && dictionary.contains(word2))) {
+			logger.info("word not found in the dictionary");
 			return "The two words must be found in the dictionary.";
 		}
 		else {
@@ -113,8 +122,13 @@ public class WordladderApplication {
 				}
 			}
 		}
-		if (!find)
+		if (!find) {
+			logger.info("no word ladder found");
 			res.append("No word ladder found.");
+		}
+		else {
+			logger.info("success");
+		}
 		return res.toString();
 	}
 	public static void main(String[] args) {
