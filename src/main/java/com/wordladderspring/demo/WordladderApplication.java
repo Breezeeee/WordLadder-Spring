@@ -14,14 +14,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @RestController
 @SpringBootApplication
 public class WordladderApplication {
-	static Logger logger = LogManager.getLogger(WordladderApplication.class.getName());
+	private static final Logger logger = LogManager.getLogger(WordladderApplication.class);
 	@RequestMapping("/{errinput}")
 	public static String err(@PathVariable String errinput) {
 		logger.info("wrong address");
