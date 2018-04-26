@@ -2,7 +2,6 @@ package com.wordladderspring.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,14 +20,9 @@ import org.apache.logging.log4j.Logger;
 @SpringBootApplication
 public class WordladderApplication {
 	private static final Logger logger = LogManager.getLogger(WordladderApplication.class);
-	@RequestMapping("/{errinput}")
-	public static String err(@PathVariable String errinput) {
-		logger.info("wrong address");
-		return "Invalid input. Input should be in the form of /{word1}/{word2}.";
-	}
 
-	@RequestMapping("/{word1}/{word2}")
-	public static String Fun(@PathVariable String word1, @PathVariable String word2)  {
+	@RequestMapping("/find")
+	public String Fun(String word1, String word2)  {
 
 		HashSet dictionary;
 		dictionary = read_Dictionary("dictionary.txt");
